@@ -4,6 +4,13 @@ def home(request):
     return render(request,'home.html')
 
 def reverse(request):
-    reversed = request.POST['usertext'][::-1]
-    data = {'reversed' : reversed}
+    usertext = request.POST['usertext']
+    reversed = usertext[::-1]
+    wcount = len(usertext.split())
+    print(wcount)
+    data = {
+        'reversed' : reversed,
+        'wcount'   : wcount,
+        'usertext' : usertext
+            }
     return render(request,'reverse.html',data)
